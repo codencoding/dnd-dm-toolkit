@@ -8,8 +8,9 @@ Place the geckodriver in the same directory as this file.
 To install Selenium through Python:
 pip install selenium
 """
-# pylint: enable=wildcard-import, method-hidden
-# pylint: enable=too-many-lines
+# The below pylint comment disables notifications that the Selenium
+# package is missing, even though it should be present.
+# pylint: disable=E0401
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
