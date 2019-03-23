@@ -1,0 +1,6 @@
+DnD DM Toolkit To Do List
+
+Add drop downs for each category of NPC generation.
+Have the column next to the npc summaries hold the name of the npc generated.
+Allow saving of certain NPC summaries
+    -Allow for additional notes to be added to existing npcs (town, story/ character relation, etc.)

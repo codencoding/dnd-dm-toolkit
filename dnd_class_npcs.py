@@ -26,9 +26,6 @@ class npcs():
     options.headless = True
     url = "http://donjon.bin.sh/5e/random/#type=npc"
 
-    def __init__(self):
-        return
-
     def timeout_check(self):
         """Exception if program is unable to access the website's NPC summaries."""
         timeout = 30
@@ -81,4 +78,24 @@ class npcs():
             npc_summs.append(i.text)
         return npc_summs
 
-    
+    def dropboxes_lists(self):
+        backend_options = []
+        frontend_options = []
+        for i in range(4):
+            backend_options.append([])
+            frontend_options.append([])
+
+        # list format:
+        # backend: [xpath, elements]
+        # frontend: [extracted text options]
+        for i in range(len(backend_options)):
+            backend_options[i].append("/html/body/div[2]/div[2]/form/table/tbody/tr[6]/td[2]/select[" + str(i + 1) + "]/option")
+            backend_options[i].append(self.driver.find_elements_by_xpath(backend_options[i][0]))
+            for j in backend_options[i][1]:
+                if isinstance(j, list):
+                    for k in j:
+                        frontend_options[i].append(k.text)
+                else:
+                    frontend_options[i].append(j.text)
+
+        return frontend_options
