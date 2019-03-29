@@ -90,7 +90,6 @@ class npcs():
         # backend: [id string list, elements list]
         # frontend: [extracted dropdown menu choices as str]
         for i in range(len(backend_options)):
-            backend_options[i].append
             backend_options[i].append(self.driver.find_elements_by_id(backend_options[i][0]))
             for web_elem in backend_options[i][1]:
                 frontend_options.append(web_elem.text.split('\n'))

@@ -99,41 +99,48 @@ button_gen_npcs.pack(side=TOP)
 # labelaaa = Label(framing, text=variable.get())
 # labelaaa.pack(side=RIGHT)
 
-def callback(label, var, *args):
-    # print("============")
-    # print("Label is ")
-    # print(label)
-    # print("Variable is ")
-    # print(variable)
-    # print("============")
+
+def callback_label(label, var, *args):
     label.config(text=var.get())
+
+def callback(dropmenu, key, *args):
+    dropmenu[key][2] = dropmenu[key][0].get()
 
 
 ## Dropdown Menus
-dropmenu_lists = npcs_class.dropboxes_lists()
-# dropmenu_elems elements are formatted as [[StringVariable, OptionsMenu], ...]
-dropmenu_elems = [[] for i in range(4)]
+dropmenu_lists = {i[0] : i for i in npcs_class.dropboxes_lists()}
+# dropmenu_elems elements are formatted as:
+#   {"key":[StringVariable,
+#     OptionsMenu,
+#     GlobalVariable], ...}
+dropmenu_elems = {i : [] for i in dropmenu_lists}
 
-for i in range(len(dropmenu_lists)):
+for key in dropmenu_elems.keys():
     # Add a string variable to keep track of selected dropdown option
-    dropmenu_elems[i] = [StringVar(framing)]
+    dropmenu_elems[key].append(StringVar(framing))
     # Set the initial selected value for the dropdown menu
-    dropmenu_elems[i][0].set(dropmenu_lists[i])
+    dropmenu_elems[key][0].set(dropmenu_lists[key][0])
+
     # Create the option menu
-    dropmenu_elems[i].append(OptionMenu(framing,
-                                    dropmenu_elems[i][0],
-                                    dropmenu_lists[i][0],
-                                    *dropmenu_lists[i]))
+    dropmenu_elems[key].append(OptionMenu(framing,
+                                    dropmenu_elems[key][0],
+                                    dropmenu_lists[key][0],
+                                    *dropmenu_lists[key]))
     # Pack the option menu
-    dropmenu_elems[i][1].pack(side=TOP)
+    dropmenu_elems[key][1].pack(side=TOP)
+
+    # Trace all OptionMenu selections
+    dropmenu_elems[key].append("VAR NOT YET ASSIGNED")
+    var = dropmenu_elems[key][0]
+    var.trace("w", partial(callback, dropmenu_elems, key))
 
 ## Testing dropdown selection with labels
-label_list = []
-for i in range(len(dropmenu_elems)):
-    label_list.append(Label(framing, text=dropmenu_elems[i][0].get()))
-    label_list[i].pack(side=TOP)
-    variable = dropmenu_elems[i][0]
-    variable.trace("w", partial(callback, label_list[i], variable))
+# label_list = []
+# for i in range(len(dropmenu_elems)):
+#     label_list.append(Label(framing, text=dropmenu_elems[i][0].get()))
+#     label_list[i].pack(side=TOP)
+#     var = dropmenu_elems[i][0]
+    # var.trace("w", partial(callback_label, label_list[i], var))
 
 
 root.mainloop()
