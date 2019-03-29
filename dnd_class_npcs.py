@@ -39,9 +39,9 @@ class npcs():
     def init_npcs(self):
         # Start program execution timer.
         start = time.time()
-        
+
         # Replace "webdriver.____" below with .Firefox(), or with the browser of your choice.
-        self.driver = webdriver.Firefox(options=npcs.options) 
+        self.driver = webdriver.Firefox(options=self.options) 
         # Navigate to the page indicated by the url.
         self.driver.get(npcs.url)
         self.timeout_check()
@@ -79,23 +79,20 @@ class npcs():
         return npc_summs
 
     def dropboxes_lists(self):
-        backend_options = []
         frontend_options = []
-        for i in range(4):
-            backend_options.append([])
-            frontend_options.append([])
+        backend_options = []
+
+        ids = ["npc-gender", "npc-race", "npc-order", "npc-culture"]
+        for i in ids:
+            backend_options.append([i])
 
         # list format:
-        # backend: [xpath, elements]
-        # frontend: [extracted text options]
+        # backend: [id string list, elements list]
+        # frontend: [extracted dropdown menu choices as str]
         for i in range(len(backend_options)):
-            backend_options[i].append("/html/body/div[2]/div[2]/form/table/tbody/tr[6]/td[2]/select[" + str(i + 1) + "]/option")
-            backend_options[i].append(self.driver.find_elements_by_xpath(backend_options[i][0]))
-            for j in backend_options[i][1]:
-                if isinstance(j, list):
-                    for k in j:
-                        frontend_options[i].append(k.text)
-                else:
-                    frontend_options[i].append(j.text)
+            backend_options[i].append
+            backend_options[i].append(self.driver.find_elements_by_id(backend_options[i][0]))
+            for web_elem in backend_options[i][1]:
+                frontend_options.append(web_elem.text.split('\n'))
 
         return frontend_options
