@@ -1,0 +1,25 @@
+DnD Session Running Website
+
+Currently implemented features:
+Turn tracker (From improved initiative)
+Spells reference (From d&d spells)
+
+
+Mandatory Features:
+Turn tracker
+    health tracker embedded
+Map display (draggable)
+Random generators
+    monster cr encounters
+In-browser wiki reference
+Spells reference
+    With bookmarking capabilities
+
+Auxiliary Features:
+Notes Area (organized)
+Random generators
+    treasure loot
+    equipment
+    room descriptions
+Sketching area
+Pin pages of pdfs for quick reference

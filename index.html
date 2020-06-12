@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="include/stylesheet.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400&display=swap" rel="stylesheet">
+        <script src="js/config.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            <div id="sidebar">
+                <ul style="list-style: none; padding: 0px; margin: 0px;">
+                    <!-- <li id="dndb_btn">D&D Beyond</li> -->
+                    <li class="inactive_btn" id="turn_track_btn" onclick="show_view('turn_track')">Turn Tracker</li>
+                    <!-- <li class="inactive_btn" id="gen_btn">Generators</li> -->
+                    <!-- <li class="inactive_btn" id="map_btn">Maps</li> -->
+                    <li class="inactive_btn" id="spells_btn" onclick="show_view('spells')">Spells</li>
+                    <li class="inactive_btn" id="combat_btn" onclick="show_view('combat')">Combat</li>
+                    <li class="inactive_btn" id="reference_btn" onclick="show_view('reference')">Reference</li>
+                    <li class="inactive_btn collapsible" onclick="toggle_collapsible(this)">Handbooks</li>
+                    <li class="inactive_btn collapsible_content" id="phb_btn" onclick="show_view('phb')">Player's Handbook</li>
+                    <li class="inactive_btn collapsible_content" id="mm_btn" onclick="show_view('mm')">Monster Manual</li>
+                    <li class="inactive_btn collapsible_content" id="xgte_btn" onclick="show_view('xgte')">Xanathar's Guide</li>
+                    <li class="inactive_btn collapsible_content" id="dmhb_btn" onclick="show_view('dmhb')">DM's Handbook</li>
+                </ul>
+            </div>
+            <div id="content">
+                <iframe id="combat" class="content" src="include\rules_info\quickref.html" style="display:none"></iframe> 
+                <iframe id="reference" class="content" src="https://roll20.net/compendium/dnd5e" style="display:none"></iframe> 
+                <iframe id="phb" class="content" src="include\handbooks\Player's Handbook.pdf" style="display:none"></iframe>
+                <iframe id="dmhb" class="content" src="include\handbooks\Dungeon Master's Handbook.pdf" style="display:none"></iframe>
+                <iframe id="mm" class="content" src="include\handbooks\Monster's Manual.pdf" style="display:none"></iframe>
+                <iframe id="xgte" class="content" src="include\handbooks\Xanathar's Guide to Everything.pdf" style="display:none"></iframe>
+                <iframe id="turn_track" class="content" src="https://www.improved-initiative.com/" style="display:none" disabled></iframe> 
+                <iframe id="spells" class="content" src="https://www.dnd-spells.com/spells" style="display:none"></iframe> 
+            </div>
+        </div>
+    </body>
+
+</html>
